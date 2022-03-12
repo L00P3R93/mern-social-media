@@ -71,7 +71,7 @@ export default function EditProfile({ match }) {
 		read({userId: match.params.userId}, {t: jwt.token}, signal)
 		.then((data) => {
 			if (data && data.error) {setValues({...values, error: data.error})} 
-			else {setValues({...values, name: data.name, email: data.email})}
+			else {setValues({...values, id: data._id, name: data.name, email: data.email, about: data.about})}
 		})
 		return function cleanup(){abortController.abort()}
 
@@ -89,7 +89,7 @@ export default function EditProfile({ match }) {
 		update({userId: match.params.userId}, {t: jwt.token}, userData)
 		.then((data) => {
 			if (data && data.error) {setValues({...values, error: data.error})} 
-			else {setValues({...values, userId: data._id, 'redirectToProfile': true})}
+			else {setValues({...values, 'redirectToProfile': true})}
 		})
 	}
 	const handleChange = name => event => {
@@ -99,7 +99,7 @@ export default function EditProfile({ match }) {
 
 	const photoUrl = values.id ? `/api/users/photo/${values.id}?${new Date().getTime()}`: '/api/users/defaultPhoto'
 
-	if (values.redirectToProfile) {return (<Redirect to={'/user/' + values.userId}/>)}
+	if (values.redirectToProfile) {return (<Redirect to={'/user/' + values.id}/>)}
 
 	return (
 		<Card className={classes.card}>
