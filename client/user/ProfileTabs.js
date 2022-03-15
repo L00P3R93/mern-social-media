@@ -5,11 +5,12 @@ import Typography from '@material-ui/core/Typography'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import FollowGrid from './../user/FollowGrid'
+import PostList from './../post/PostList'
 
 export default function ProfileTabs(props){
     const [tab, setTab] = useState(0)
 
-    const handleChange = (event, value) => {setTab(value)}
+    const handleTabChange = (event, value) => {setTab(value)}
 
     return (
         <div>
@@ -31,6 +32,12 @@ export default function ProfileTabs(props){
        {tab === 2 && <TabContainer><FollowGrid people={props.user.followers}/></TabContainer>}
         </div>
     )
+}
+
+ProfileTabs.propTypes = {
+    user: PropTypes.object.isRequired,
+    removePostUpdate: PropTypes.func.isRequired,
+    posts: PropTypes.array.isRequired
 }
 
 const TabContainer = (props) => {
