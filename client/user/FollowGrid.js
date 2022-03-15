@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
+import { Link } from 'react-router-dom'
+import GridList from '@material-ui/core/GridList'
+import GridListTile from '@material-ui/core/GridListTile'
 
 const useStyles = makeStyles(theme => ({
     root: {
