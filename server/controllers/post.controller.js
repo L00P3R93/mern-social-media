@@ -3,7 +3,7 @@ import errorHandler from './../helpers/dbErrorHandler'
 import formidable from 'formidable'
 import fs from 'fs'
 
-const create = (req, rex, next) => {
+const create = (req, res, next) => {
     let form =  new formidable.IncomingForm()
     form.keepExtensions = true
     form.parse(req, async (err, fields, files) => {
